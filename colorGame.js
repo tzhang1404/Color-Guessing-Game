@@ -35,8 +35,18 @@ function assignColor(){
 	squareList.forEach(function(square, index){
 		square.style.backgroundColor = colorList[index];
 	});
-
 	return colorList[answerColor];
+}
+
+function assignSpecificColor(color){
+	var squareList = document.querySelectorAll(".square");
+	var answerColor = color;
+	squareList.forEach(function(square){
+		square.classList.remove("wrongChoice");
+		square.textContent = "";
+		square.style.backgroundColor = answerColor;
+	});
+
 }
 
 function resetInterface(){
@@ -46,7 +56,7 @@ function resetInterface(){
 	display.textContent = "RGB";
 	header.style.backgroundColor = "";
 	squareList.forEach(function(square, index){
-		square.style.backgroundColor = "pink";
+		square.style.backgroundColor = "grey";
 		square.classList.remove("wrongChoice");
 		square.textContent = "";
 	});
@@ -74,6 +84,7 @@ function startInterface(){
 			if(started){
 				if(this.style.backgroundColor == answer){
 					header.style.backgroundColor = answer;
+					assignSpecificColor(answer);
 					display.textContent = "Correct!";
 				}
 				else{
