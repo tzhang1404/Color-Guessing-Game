@@ -1,3 +1,6 @@
+init();
+
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -50,6 +53,9 @@ function assignSpecificColor(color){
 }
 
 function resetInterface(){
+	var startButton = document.querySelector("#startButton");
+	startButton.addEventListener("click", updateInterface);
+
 	var squareList = document.querySelectorAll(".square");
 	var display = document.querySelector("#RGBColor");
 	var header = document.querySelector(".header");
@@ -107,11 +113,10 @@ function updateInterface(){
 }
 
 
-//the game starts
-resetInterface();
-var started = false;
-var startButton = document.querySelector("#startButton");
-startButton.addEventListener("click", updateInterface);
+function init(){
+	resetInterface();
+}
+
 
 
 
